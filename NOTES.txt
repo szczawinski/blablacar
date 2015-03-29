@@ -1,0 +1,16 @@
+- dodanie jackson-databind do pom.xml w rest servicie tłumaczy objekty na json, nie potrzeba zadnych beanów deklarować
+
+
+PostgreSQL 9.2 database added.  Please make note of these credentials:
+
+   Root User: adminwcxsjdx
+   Root Password: vs-5-KFEZySq
+   Database Name: blablacar
+
+Connection URL: postgresql://$OPENSHIFT_POSTGRESQL_DB_HOST:$OPENSHIFT_POSTGRESQL_DB_PORT
+
+
+Please make note of these MySQL credentials again:
+  Root User: admintM3u126
+  Root Password: 2iEaej1jiPtr
+URL: https://blablacar-szczawinskipiotr.rhcloud.com/phpmyadmin/

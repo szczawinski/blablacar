@@ -1,0 +1,15 @@
+/target
+/.settings
+.classpath
+.project
+/.idea
+*.pyc
+*.iml
+.checkstyle
+.pmd
+/pcj_*
+/.metadata
+/reports
+/mem.h2.db
+/mem.trace.db
+desktop.ini
