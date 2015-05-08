@@ -3,14 +3,12 @@ package pl.szczawip.blablacar.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
-import com.google.common.collect.Lists;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 
+import javax.persistence.*;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.util.Date;
-import java.util.List;
 
 
 @Entity
@@ -19,41 +17,60 @@ public class Ride {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String arrivalLocation;
+
+    private String destinationLocation;
+
     private String departureLocation;
+
     private Date departureTime;
+
     private Date returnTime;
-    private int price;
+
+    @ManyToOne
+    @Cascade(value = CascadeType.ALL)
+    private Driver driver;
 
 
-    public Ride(){
-    }
-
-    public Ride(String departureLocation,String arrivalLocation, Date departureTime){
-        this.departureLocation = departureLocation;
-        this.arrivalLocation = arrivalLocation;
-        this.departureTime = departureTime;
-    }
-
-
-    public void setReturnTime(Date returnTime) {
+    public void setReturnTime(final Date returnTime) {
         this.returnTime = returnTime;
     }
 
-    public String getArrivalLocation() {
-        return arrivalLocation;
+    public String getDestinationLocation() {
+        return destinationLocation;
     }
 
     public String getDepartureLocation() {
         return departureLocation;
     }
 
-    @JsonSerialize(using=DateSerializer.class)
+    @JsonSerialize(using = DateSerializer.class)
     public Date getDepartureTime() {
         return departureTime;
     }
-    @JsonSerialize(using=DateSerializer.class)
+
+    @JsonSerialize(using = DateSerializer.class)
     public Date getReturnTime() {
         return returnTime;
+    }
+
+    public void setDestinationLocation(final String destinationLocation) {
+        this.destinationLocation = destinationLocation;
+    }
+
+    public void setDepartureLocation(final String departureLocation) {
+        this.departureLocation = departureLocation;
+    }
+
+    public void setDepartureTime(final Date departureTime) {
+        this.departureTime = departureTime;
+    }
+
+
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(final Driver driver) {
+        this.driver = driver;
     }
 }

@@ -1,17 +1,22 @@
 package pl.szczawip.blablacar.config;
 
+
+import java.sql.SQLException;
+
 import javax.sql.DataSource;
 
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AvailableSettings;
+import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.servlet.view.JstlView;
-import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import pl.szczawip.blablacar.model.Driver;
 import pl.szczawip.blablacar.model.Ride;
@@ -24,7 +29,7 @@ import pl.szczawip.blablacar.service.BlaBlaServiceImpl;
 
 @Configuration
 @EnableTransactionManagement
-public class AppConfig {
+public class HibetnateEmbeddedDBConfig {
 
 
     @Bean
@@ -33,23 +38,20 @@ public class AppConfig {
     }
 
     @Bean
-    public RideRepository rideRepository() {
+    public RideRepository rideRepository(){
         return new HibernateRideRepository();
     }
-
     @Bean
-    public DriverRepository driverRepository() {
+    public DriverRepository driverRepository(){
         return new HibernateDriverRepository();
     }
 
     @Bean
     public DataSource dataSource() {
-        final DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://127.0.0.1:5433/blablacar");
-        dataSource.setUsername("postgres");
-        dataSource.setPassword("postgres");
-        return dataSource;
+        return new  EmbeddedDatabaseBuilder()
+                .setType(EmbeddedDatabaseType.HSQL).setName("mydb").addScript("schema.sql")
+                .build();
+
     }
 
     @Bean
@@ -67,12 +69,15 @@ public class AppConfig {
     }
 
     @Bean
-    public UrlBasedViewResolver setupViewResolver() {
-        final UrlBasedViewResolver resolver = new UrlBasedViewResolver();
-        resolver.setPrefix("/WEB-INF/views/");
-        resolver.setSuffix(".jsp");
-        resolver.setViewClass(JstlView.class);
-        return resolver;
+    public SchemaExport schemaExport() throws HibernateException, SQLException {
+        final org.hibernate.cfg.Configuration configuration = new org.hibernate.cfg.Configuration();
+        configuration.setProperty(AvailableSettings.USER, "sa")
+                .setProperty(AvailableSettings.PASS, "")
+                .setProperty(AvailableSettings.URL, "jdbc:hsqldb:mem:mydb")
+                .setProperty(AvailableSettings.DIALECT, "org.hibernate.dialect.HSQLDialect")
+                .setProperty(AvailableSettings.DRIVER, "org.hsqldb.jdbcDriver")
+                .addAnnotatedClass(Ride.class)
+                .addAnnotatedClass(Driver.class);
+        return new SchemaExport(configuration);
     }
-
 }

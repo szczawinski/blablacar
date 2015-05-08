@@ -12,18 +12,16 @@ import java.util.List;
 
 
 @Repository
-public class HibernateRideRepositoryImpl implements RideRepository{
-
+public class HibernateRideRepository implements RideRepository{
 
     @Autowired
     SessionFactory sessionFactory;
 
-
     @Override
-    public List<Ride> findRides(String departureLocation, String arrivalLocation) {
+    public List<Ride> findRides(String departureLocation, String destinationLocation) {
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Ride.class);
         criteria.add(Restrictions.eq("departureLocation", departureLocation));
-        criteria.add(Restrictions.eq("arrivalLocation", arrivalLocation));
+        criteria.add(Restrictions.eq("destinationLocation", destinationLocation));
         return criteria.list();
     }
 

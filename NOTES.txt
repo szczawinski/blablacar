@@ -1,5 +1,13 @@
 - dodanie jackson-databind do pom.xml w rest servicie tłumaczy objekty na json, nie potrzeba zadnych beanów deklarować
 
+@EnableWebMvc annotation does a number of useful things – specifically, in the case of REST, it detect the existence
+of Jackson and JAXB 2 on the classpath and automatically creates and registers default JSON and XML converters.
+
+<%@ page contentType="text/html; charset=UTF-8" %>   dodaje polskie znaki w JSP
+
+
+
+<img src="<c:url value='/resources/images/logo2.png' />"/> żeby wyświetlić obraz w JSP
 
 PostgreSQL 9.2 database added.  Please make note of these credentials:
 

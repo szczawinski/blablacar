@@ -2,7 +2,9 @@ package pl.szczawip.blablacar.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import pl.szczawip.blablacar.model.Driver;
 import pl.szczawip.blablacar.model.Ride;
+import pl.szczawip.blablacar.repository.DriverRepository;
 import pl.szczawip.blablacar.repository.RideRepository;
 
 import org.springframework.stereotype.Service;
@@ -14,6 +16,10 @@ public class BlaBlaServiceImpl implements BlaBlaService{
 
     @Autowired
     private RideRepository rideRepository;
+
+    @Autowired
+    private DriverRepository driverRepository;
+
 
     @Override
     @Transactional(readOnly = true)
@@ -32,6 +38,13 @@ public class BlaBlaServiceImpl implements BlaBlaService{
     @Transactional
     public void saveRide(Ride ride) {
         rideRepository.save(ride);
+    }
+
+    @Override
+    @Transactional
+    public void saveDriver(final Driver driver) {
+        driverRepository.save(driver);
+
     }
 
 }

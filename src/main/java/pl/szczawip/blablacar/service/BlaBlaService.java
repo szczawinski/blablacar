@@ -1,13 +1,10 @@
 package pl.szczawip.blablacar.service;
 
-import pl.szczawip.blablacar.model.Ride;
-
-import java.util.Collection;
 import java.util.List;
 
-/**
- * Created by szczawip on 3/26/2015.
- */
+import pl.szczawip.blablacar.model.Driver;
+import pl.szczawip.blablacar.model.Ride;
+
 public interface BlaBlaService {
 
     List<Ride> findRides(String departureLocation, String arrivalLocation);
@@ -15,4 +12,6 @@ public interface BlaBlaService {
     List<Ride> findRides();
 
     void saveRide(Ride ride);
+
+    void saveDriver(Driver driver);
 }

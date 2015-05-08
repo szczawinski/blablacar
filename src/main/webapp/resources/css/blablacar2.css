@@ -1,0 +1,386 @@
+
+body {
+    background: none repeat scroll 0 0 #f4f4f4;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    margin : 0;
+}
+
+body .page {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    box-shadow: none;
+}
+
+.page {
+    position: relative;
+    background: none repeat scroll 0 0 #fff;
+    margin: 0 auto;
+    width: 990px;
+}
+
+.site-header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.site-header .container {
+    margin-bottom: 17px;
+    padding-bottom: 0;
+}
+
+.site-header .logo {
+    margin-top: 17px;
+}
+
+.container {
+    padding-bottom: 17px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 940px;
+}
+
+.hp-hero {
+	background : url('/blablacar/resources/images/road.jpg') no-repeat scroll 0 100% #2ba6e5;
+	margin: 0 -25px;
+    position: relative;
+    z-index: 2;
+}
+
+.hp-hero .hp-hero-search {
+    margin-left: 55px;
+    padding: 90px 0 63px;
+}
+
+.hp-hero .hp-hero-search h1 {
+    color: #fff;
+    font-size: 48px;
+    line-height: 48px;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
+}
+
+.margin-half-bottom {
+    margin-bottom: 9px !important;
+}
+
+.search-form {
+    float: left;
+}
+
+.hp-hero .hp-hero-search .search-form .from,        .hp-hero .hp-hero-search .search-form .to,               .hp-hero .hp-hero-search .search-form .date {
+    float: left;
+    margin: 0 17px 0 0;
+}
+
+.hp-hero .hp-hero-search .search-form .search-from, .hp-hero .hp-hero-search .search-form .search-to, .hp-hero .hp-hero-search .search-form .search-date {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid white;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    float: left;
+    font-size: 16px;
+    height: 34px;
+    width: 206px;
+    border-radius: 4px;
+    
+}
+
+.hp-hero .hp-hero-search .search-form .search-from {
+    background: url('/blablacar/resources/images/from.png') no-repeat scroll 6px 5px #fff;
+    padding-left: 32px;
+}
+
+.hp-hero .hp-hero-search .search-form .search-to {
+    background: url('/blablacar/resources/images/to.png') no-repeat scroll 6px 5px #fff;
+    padding-left: 32px;
+}
+
+.hp-hero .hp-hero-search .search-form .search-date {
+    background: url('/blablacar/resources/images/date.png') no-repeat scroll 6px 5px #fff;
+    padding-left: 32px;
+    width: 112px;
+}
+
+.hp-hero .hp-hero-search .search-form button {
+    border-width: 1px;
+    line-height: 25px;
+}
+
+.btn-large {
+    font-size: 18px;
+    line-height: normal;
+    padding: 6px 14px;
+}
+
+.btn-2action {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #ffbf00;
+    border-color: #ffbf00 #ffbf00 #e0a800;
+    border-image: none;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px 1px 2px;
+    box-shadow: none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 18px;
+    margin-bottom: 0;
+    padding: 4px 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.hp-hero .hp-hero-banner {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.4);
+    left: 0;
+    top: 0;
+    position : absolute;
+    width: 100%;
+}
+
+.hp-hero .hp-hero-banner h2 {
+    margin: 8px 25px;
+}
+
+.hp-hero .hp-hero-footer {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3);
+    padding: 17px 25px;
+}
+
+
+.hp-hero .hp-hero-footer h2 {
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
+}
+
+
+.row {
+ margin-left: -20px;	
+}
+
+.trip-search-form {
+    background: none repeat scroll 0 0 #f1f1e9;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0 -25px 29px;
+    padding: 10px 30px;
+    float: none;
+}
+
+.trip-search-form form {
+    margin: 0;
+}
+
+.search-in .trip-search-form input.search-from[type="text"] {
+    background: url('/blablacar/resources/images/from.png') no-repeat scroll 12px 5px #fff;
+}
+
+.search-in .trip-search-form input[type="text"] {
+    border: medium none;
+    height: 31px;
+}
+
+
+.search-form input.search-from[type="text"], .search-form input.search-from[type="datetime"] {
+    padding-left: 32px;
+}
+.trip-search-form input[type="text"] {
+    margin-right: 8px;
+    width: 215px;
+    box-shadow: none;
+    font-size: 16px;
+    line-height: 18px;
+}
+
+.search-in .trip-search-form button.btn {
+    background-color: #f7f7f5;
+    background-image: none;
+    border: 1px solid #e7e7d9;
+    box-shadow: none;
+    height: auto;
+    padding: 4px 12px;
+}
+
+
+
+
+.trip-search-sorts {
+    background: linear-gradient(#ffffff 70%, #f5f6f7) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #d6d6d6;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    margin-bottom: -1px;
+    margin-left: -10px;
+}
+
+
+.margin-bottom {
+    margin-bottom: 17px !important;
+}
+.align-center {
+    text-align: center !important;
+}
+.size22 {
+    font-size: 22px !important;
+}
+
+.size16 {
+    font-size: 16px !important;
+}
+
+.dark-gray {
+    color: #666;
+}
+h2 {
+    font-size: 24px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+
+
+
+
+.form-container {
+    background: none repeat scroll 0 0 #f1f1e9 !important;
+    border-radius: 3px;
+    color: #333;
+}
+
+
+.main-column {
+    border-radius: 3px;
+    color: #666;
+}
+
+.main-column {
+    border: 1px solid #ccc;
+    padding: 0 17px 17px;
+    background: none repeat scroll 0 0 #f1f1e9 !important;
+    border-radius: 3px;
+    color: #333;
+}
+
+.trip-search-facets {
+    padding-bottom: 0;
+}
+
+
+
+.main-column .main-column-block {
+    font-size: 14px;
+}
+.main-column {
+    color: #666;
+}
+
+
+.main-column .main-column-title {
+    border-top: 1px solid #ccc;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 17px;
+    padding-top: 17px;
+}
+
+
+
+
+
+[class*="span"] {
+    float: left;
+    margin-left: 20px;
+    min-height: 1px;
+}
+
+
+.span3 {
+    width: 220px;
+}
+
+
+.span2 {
+	width: 190px;
+}
+
+
+.span9 {
+    width: 700px;
+}
+
+
+.span5 {
+    margin: 0 0 0 5px;
+    width: 370px;
+    float: left;
+    min-height: 1px;
+}
+
+
+.trip-alert-form-container {
+    background: #0ca9fa;
+    border-radius: 3px;
+    color: #fff;
+    margin: 0 0 20px;
+    padding: 17px 17px 17px 95px;
+}
+
+
+
+.trip-search-results {
+    margin: 0px 0px 0px -10px;
+    border-top: 1px solid #CCC;
+}
+
+
+li {
+    line-height: 18px;
+}
+
+
+
+.user-info {
+    float: left;
+    font-size: 12px;
+    margin: 0 0 0 8px;
+    padding-top: 6px;
+    width: 95px;
+}
+
+
+
+.photo {
+    border-radius: 3px;
+    float: left;
+    margin-top: 1px;
+    margin-left: 10px;
+}
+
+img {
+    border: 0 none;
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+
+
+
+
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+    display: block;
+}
+
+
+

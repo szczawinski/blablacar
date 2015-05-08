@@ -1,10 +1,7 @@
-package pl.szczawip.blablacar.service;
+package pl.szczawip.blablacar.config;
 
 
-import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AvailableSettings;
-import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -12,17 +9,27 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import pl.szczawip.blablacar.model.Driver;
 import pl.szczawip.blablacar.model.Ride;
+import pl.szczawip.blablacar.repository.DriverRepository;
 import pl.szczawip.blablacar.repository.RideRepository;
-import pl.szczawip.blablacar.repository.hibernate.HibernateRideRepositoryImpl;
+import pl.szczawip.blablacar.repository.hibernate.HibernateDriverRepository;
+import pl.szczawip.blablacar.repository.hibernate.HibernateRideRepository;
+import pl.szczawip.blablacar.service.BlaBlaService;
+import pl.szczawip.blablacar.service.BlaBlaServiceImpl;
+import pl.szczawip.blablacar.web.controller.RideController;
 
 import javax.sql.DataSource;
-import java.sql.SQLException;
 
 @Configuration
 @EnableTransactionManagement
-public class HibernateConfig {
+public class HibetnatePostgreSQLConfig {
 
+
+    @Bean
+    public RideController rideController(){
+        return  new RideController();
+    }
 
     @Bean
     public BlaBlaService blaBlaService() {
@@ -31,7 +38,12 @@ public class HibernateConfig {
 
     @Bean
     public RideRepository rideRepository(){
-        return new HibernateRideRepositoryImpl();
+        return new HibernateRideRepository();
+    }
+
+    @Bean
+    public DriverRepository driverRepository(){
+        return new HibernateDriverRepository();
     }
 
 
@@ -39,7 +51,7 @@ public class HibernateConfig {
     public DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://127.0.0.1:5433/blablacar");
+        dataSource.setUrl("jdbc:postgresql://127.0.0.1:5433/blablacar_test");
         dataSource.setUsername("postgres");
         dataSource.setPassword("postgres");
         return dataSource;
@@ -49,6 +61,7 @@ public class HibernateConfig {
     public SessionFactory sessionFactory() {
         final LocalSessionFactoryBuilder localSessionFactoryBuilder = new LocalSessionFactoryBuilder(dataSource());
         localSessionFactoryBuilder.addAnnotatedClass(Ride.class);
+        localSessionFactoryBuilder.addAnnotatedClass(Driver.class);
         localSessionFactoryBuilder.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         return localSessionFactoryBuilder.buildSessionFactory();
     }
@@ -58,15 +71,5 @@ public class HibernateConfig {
         return new HibernateTransactionManager(sessionFactory());
     }
 
-    @Bean
-    public SchemaExport schemaExport() throws HibernateException, SQLException {
-        final org.hibernate.cfg.Configuration configuration = new org.hibernate.cfg.Configuration();
-        configuration.setProperty(AvailableSettings.USER, "postgres")
-                .setProperty(AvailableSettings.PASS, "postgres")
-                .setProperty(AvailableSettings.URL, "jdbc:postgresql://localhost:5433/blablacar")
-                .setProperty(AvailableSettings.DIALECT, "org.hibernate.dialect.PostgreSQLDialect")
-                .setProperty(AvailableSettings.DRIVER, "org.postgresql.Driver")
-                .addAnnotatedClass(Ride.class);
-        return new SchemaExport(configuration);
-    }
+
 }
