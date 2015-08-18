@@ -1,4 +1,4 @@
-package pl.szczawip.blablacar.service;
+package pl.szczawip.blablacar.service.impl;
 
 import java.util.List;
 
@@ -14,4 +14,6 @@ public interface BlaBlaService {
     void saveRide(Ride ride);
 
     void saveDriver(Driver driver);
+
+    List<Driver> findDrivers();
 }

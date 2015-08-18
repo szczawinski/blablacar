@@ -6,10 +6,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import pl.szczawip.blablacar.misc.bean.TestBean;
 
-/**
- * Created by szczawip on 3/23/2015.
- */
-public class JavaBasedContainerConfigTest {
+
+public class JavaConfigTest {
 
 
     @Test
@@ -22,6 +20,7 @@ public class JavaBasedContainerConfigTest {
         Assert.assertNotNull(testBean);
         Assert.assertNotNull(testBean.getInjectedBean());
         Assert.assertEquals("autowired", testBean.getInjectedBean().getName());
-
     }
+
+
 }

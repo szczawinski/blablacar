@@ -1,50 +1,58 @@
-package pl.szczawip.blablacar.service;
+package pl.szczawip.blablacar.service.impl.impl;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import pl.szczawip.blablacar.model.Driver;
 import pl.szczawip.blablacar.model.Ride;
-import pl.szczawip.blablacar.repository.DriverRepository;
-import pl.szczawip.blablacar.repository.RideRepository;
+import pl.szczawip.blablacar.dao.DriverDao;
+import pl.szczawip.blablacar.dao.RideDao;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.szczawip.blablacar.service.impl.BlaBlaService;
+
 import java.util.List;
 
 @Service
-public class BlaBlaServiceImpl implements BlaBlaService{
+public class BlaBlaServiceImpl implements BlaBlaService {
 
     @Autowired
-    private RideRepository rideRepository;
+    private RideDao rideDao;
 
     @Autowired
-    private DriverRepository driverRepository;
+    private DriverDao driverDao;
 
 
     @Override
     @Transactional(readOnly = true)
     public List<Ride> findRides(String departureLocation, String arrivalLocation) {
-        return rideRepository.findRides(departureLocation, arrivalLocation);
+        return rideDao.getAll(departureLocation, arrivalLocation);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<Ride> findRides() {
-        return rideRepository.findRides();
+        return rideDao.getAll();
     }
 
 
     @Override
     @Transactional
     public void saveRide(Ride ride) {
-        rideRepository.save(ride);
+
+        rideDao.insert(ride);
     }
 
     @Override
     @Transactional
     public void saveDriver(final Driver driver) {
-        driverRepository.save(driver);
+        driverDao.insert(driver);
 
+    }
+
+    @Override
+    public List<Driver> findDrivers() {
+        return driverDao.getAll();
     }
 
 }

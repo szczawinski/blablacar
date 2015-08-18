@@ -31,6 +31,8 @@ public class Ride {
     private Driver driver;
 
 
+
+
     public void setReturnTime(final Date returnTime) {
         this.returnTime = returnTime;
     }
@@ -72,5 +74,9 @@ public class Ride {
 
     public void setDriver(final Driver driver) {
         this.driver = driver;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

@@ -14,12 +14,13 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import pl.szczawip.blablacar.config.ControllersConfig;
 import pl.szczawip.blablacar.config.HibetnatePostgreSQLConfig;
+import pl.szczawip.blablacar.config.MvcConfig;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {ControllersConfig.class})
+@ContextConfiguration(classes = {ControllersConfig.class, MvcConfig.class})
 @WebAppConfiguration
 public class RideControllerTest {
 

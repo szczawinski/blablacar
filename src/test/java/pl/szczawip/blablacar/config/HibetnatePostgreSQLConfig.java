@@ -11,12 +11,12 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import pl.szczawip.blablacar.model.Driver;
 import pl.szczawip.blablacar.model.Ride;
-import pl.szczawip.blablacar.repository.DriverRepository;
-import pl.szczawip.blablacar.repository.RideRepository;
-import pl.szczawip.blablacar.repository.hibernate.HibernateDriverRepository;
-import pl.szczawip.blablacar.repository.hibernate.HibernateRideRepository;
-import pl.szczawip.blablacar.service.BlaBlaService;
-import pl.szczawip.blablacar.service.BlaBlaServiceImpl;
+import pl.szczawip.blablacar.dao.DriverDao;
+import pl.szczawip.blablacar.dao.RideDao;
+import pl.szczawip.blablacar.dao.hibernate.HibernateDriverDao;
+import pl.szczawip.blablacar.dao.hibernate.HibernateRideDo;
+import pl.szczawip.blablacar.service.impl.BlaBlaService;
+import pl.szczawip.blablacar.service.impl.impl.BlaBlaServiceImpl;
 import pl.szczawip.blablacar.web.controller.RideController;
 
 import javax.sql.DataSource;
@@ -37,13 +37,13 @@ public class HibetnatePostgreSQLConfig {
     }
 
     @Bean
-    public RideRepository rideRepository(){
-        return new HibernateRideRepository();
+    public RideDao rideRepository(){
+        return new HibernateRideDo();
     }
 
     @Bean
-    public DriverRepository driverRepository(){
-        return new HibernateDriverRepository();
+    public DriverDao driverRepository(){
+        return new HibernateDriverDao();
     }
 
 

@@ -1,37 +1,33 @@
-package pl.szczawip.blablacar.repository.hibernate;
+package pl.szczawip.blablacar.dao.hibernate;
 
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import pl.szczawip.blablacar.dao.AbstractDao;
 import pl.szczawip.blablacar.model.Ride;
-import pl.szczawip.blablacar.repository.RideRepository;
+import pl.szczawip.blablacar.dao.RideDao;
 
 import java.util.List;
 
 
 @Repository
-public class HibernateRideRepository implements RideRepository{
+public class HibernateRideDo extends AbstractHibernateDao<Ride> implements RideDao {
 
     @Autowired
     SessionFactory sessionFactory;
 
     @Override
-    public List<Ride> findRides(String departureLocation, String destinationLocation) {
+    protected Class<Ride> getDomainClass() {
+        return Ride.class;
+    }
+
+    @Override
+    public List<Ride> getAll(String departureLocation, String destinationLocation) {
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Ride.class);
         criteria.add(Restrictions.eq("departureLocation", departureLocation));
         criteria.add(Restrictions.eq("destinationLocation", destinationLocation));
         return criteria.list();
-    }
-
-    @Override
-    public void save(Ride ride) {
-        sessionFactory.getCurrentSession().persist(ride);
-    }
-
-    @Override
-    public List<Ride> findRides() {
-        return sessionFactory.getCurrentSession().createCriteria(Ride.class).list();
     }
 }
