@@ -27,6 +27,7 @@ import pl.szczawip.blablacar.service.impl.impl.BlaBlaServiceImpl;
 public class AppConfig {
 
 
+
     @Bean
     public BlaBlaService blaBlaService() {
         return new BlaBlaServiceImpl();
