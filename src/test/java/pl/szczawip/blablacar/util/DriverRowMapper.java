@@ -2,8 +2,7 @@ package pl.szczawip.blablacar.util;
 
 
 import org.springframework.jdbc.core.RowMapper;
-import pl.szczawip.blablacar.model.Driver;
-import pl.szczawip.blablacar.model.Ride;
+import pl.szczawip.blablacar.domain.Driver;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

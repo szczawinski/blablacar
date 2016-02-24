@@ -2,7 +2,7 @@ package pl.szczawip.blablacar.dao.hibernate;
 
 import org.springframework.stereotype.Repository;
 import pl.szczawip.blablacar.dao.DriverDao;
-import pl.szczawip.blablacar.model.Driver;
+import pl.szczawip.blablacar.domain.Driver;
 
 
 @Repository

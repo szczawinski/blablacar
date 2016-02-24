@@ -2,8 +2,8 @@ package pl.szczawip.blablacar.service.impl;
 
 import java.util.List;
 
-import pl.szczawip.blablacar.model.Driver;
-import pl.szczawip.blablacar.model.Ride;
+import pl.szczawip.blablacar.domain.Driver;
+import pl.szczawip.blablacar.domain.Ride;
 
 public interface BlaBlaService {
 

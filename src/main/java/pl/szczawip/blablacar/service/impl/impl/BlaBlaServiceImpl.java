@@ -2,13 +2,13 @@ package pl.szczawip.blablacar.service.impl.impl;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import pl.szczawip.blablacar.model.Driver;
-import pl.szczawip.blablacar.model.Ride;
+import org.springframework.transaction.annotation.Transactional;
+import pl.szczawip.blablacar.domain.Driver;
+import pl.szczawip.blablacar.domain.Ride;
 import pl.szczawip.blablacar.dao.DriverDao;
 import pl.szczawip.blablacar.dao.RideDao;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import pl.szczawip.blablacar.service.impl.BlaBlaService;
 
 import java.util.List;
@@ -39,7 +39,6 @@ public class BlaBlaServiceImpl implements BlaBlaService {
     @Override
     @Transactional
     public void saveRide(Ride ride) {
-
         rideDao.insert(ride);
     }
 

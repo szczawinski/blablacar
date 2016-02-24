@@ -5,8 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import pl.szczawip.blablacar.dao.AbstractDao;
-import pl.szczawip.blablacar.model.Ride;
+import pl.szczawip.blablacar.domain.Ride;
 import pl.szczawip.blablacar.dao.RideDao;
 
 import java.util.List;

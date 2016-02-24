@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import pl.szczawip.blablacar.model.Ride;
+import pl.szczawip.blablacar.domain.Ride;
 import pl.szczawip.blablacar.service.impl.BlaBlaService;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/welcome")
 @SessionAttributes("formBean")
 public class WelcomeController {
 

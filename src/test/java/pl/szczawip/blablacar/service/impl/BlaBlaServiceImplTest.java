@@ -10,17 +10,4 @@ import pl.szczawip.blablacar.config.TestProperties;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {Config.class, TestProperties.class})
 public class BlaBlaServiceImplTest extends AbstractBlaBlaServiceTests{
-
-
-//    @Autowired
-//    SchemaExport schemaExport;
-//
-//    @Before
-//    public  void setup(){
-//        schemaExport.drop(true,true);
-//        schemaExport.create(true, true);
-//
-//    }
-
-
 }

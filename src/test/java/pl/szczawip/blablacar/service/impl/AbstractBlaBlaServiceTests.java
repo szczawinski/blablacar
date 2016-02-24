@@ -1,28 +1,27 @@
 package pl.szczawip.blablacar.service.impl;
 
-import org.joda.time.DateTime;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.transaction.annotation.Transactional;
+import pl.szczawip.blablacar.domain.Driver;
+import pl.szczawip.blablacar.domain.Ride;
 import pl.szczawip.blablacar.util.DriverRowMapper;
 import pl.szczawip.blablacar.util.RideRowMapper;
-import pl.szczawip.blablacar.model.Driver;
-import pl.szczawip.blablacar.model.Ride;
 
 import javax.sql.DataSource;
-import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 
 public abstract class AbstractBlaBlaServiceTests {
 
-    private final Date departureTime = new DateTime(2015, 3, 17, 15, 30).toDate();
-    private final Date returnTime = new DateTime(2015, 3, 19, 16, 40).toDate();
-
+    private final Date departureTime =  new Date();
 
     @Autowired
     BlaBlaService service;
@@ -51,11 +50,11 @@ public abstract class AbstractBlaBlaServiceTests {
         service.saveRide(newRide);
         //then
         final List<Ride> rides = jdbcTemplate.query("SELECT * FROM ride;", new RideRowMapper());
-        assertEquals("Incorrect number of rides returned.",1, rides.size());
+        assertEquals("Incorrect number of rides returned.", 1, rides.size());
         final Ride ride = rides.get(0);
         assertEquals("Incorrect field of ride: Departure Location", "Lodz", ride.getDepartureLocation());
         assertEquals("Incorrect field of ride: Destination Location", "Gdansk", ride.getDestinationLocation());
-        assertEquals("Incorrect field of ride: Departure Time", departureTime.getTime() ,ride.getDepartureTime().getTime() );
+        assertEquals("Incorrect field of ride: Departure Time", departureTime ,ride.getDepartureTime());
     }
 
 
@@ -88,26 +87,6 @@ public abstract class AbstractBlaBlaServiceTests {
         assertEquals("Incorrect number of rides returned.",1, rides2.size());
     }
 
-    @Test
-    @Transactional
-    public void addRideWithReturnDate() {
-        //given
-        final Ride newRide = new Ride();
-        newRide.setDepartureLocation("Lodz");
-        newRide.setDestinationLocation("Gdansk");
-        newRide.setDepartureTime(departureTime);
-        newRide.setReturnTime(returnTime);
-        //when
-        service.saveRide(newRide);
-        final List<Ride> rides = service.findRides("Lodz", "Gdansk");
-        //then
-        assertEquals("Incorrect number of rides returned.",1, rides.size());
-        final Ride ride = rides.get(0);
-        assertEquals("Incorrect field of ride: Departure Location", "Lodz", ride.getDepartureLocation());
-        assertEquals("Incorrect field of ride: Destination Location", "Gdansk", ride.getDestinationLocation());
-        assertEquals("Incorrect field of ride: Departure Time", departureTime.getTime(), ride.getDepartureTime().getTime());
-        assertEquals("Incorrect field of ride: Return Time", returnTime.getTime(), ride.getReturnTime().getTime());
-    }
 
     @Test
     @Transactional
@@ -132,11 +111,6 @@ public abstract class AbstractBlaBlaServiceTests {
         assertEquals("Incorrect field of driver: year of birth", 1988 , driver2.getYearOfBirth());
     }
 
-
-
-
-
-
     @Test
     @Transactional
     public void addRideWithDriverInfo() {
@@ -160,7 +134,7 @@ public abstract class AbstractBlaBlaServiceTests {
         final Ride ride = rides.get(0);
         assertEquals("Incorrect field of ride: Departure Location", "Lodz", ride.getDepartureLocation());
         assertEquals("Incorrect field of ride: Destination Location", "Gdansk", ride.getDestinationLocation());
-        assertEquals("Incorrect field of ride: Departure Time", departureTime.getTime(), ride.getDepartureTime().getTime());
+        assertEquals("Incorrect field of ride: Departure Time", departureTime, ride.getDepartureTime());
         final Driver driver = ride.getDriver();
         assertNotNull("Field Driver of object ride cannot be null", driver);
         assertEquals("Incorrect field of driver: First Name", "Piotr", driver.getFirstName());
@@ -173,7 +147,5 @@ public abstract class AbstractBlaBlaServiceTests {
         assertEquals("Incorrect field of driver: First Name", "Piotr", driver1.getFirstName());
         assertEquals("Incorrect field of driver: Last Name", "Szczawinski", driver1.getLastName());
         assertEquals("Incorrect field of driver: Year of Birth", 1988, driver1.getYearOfBirth());
-
-
     }
 }

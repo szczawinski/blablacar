@@ -9,15 +9,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.ContentResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import pl.szczawip.blablacar.config.ControllersConfig;
-import pl.szczawip.blablacar.config.HibetnatePostgreSQLConfig;
 import pl.szczawip.blablacar.config.MvcConfig;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {ControllersConfig.class, MvcConfig.class})
@@ -43,16 +42,4 @@ public class RideControllerTest {
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
                 .andReturn();
     }
-
-//    @Configuration
-//    @EnableWebMvc
-//    @Import(TestConfig.class)
-//    public static class TestConfiguration {
-//
-//        @Bean
-//        public RideController ridController() {
-//            return new RideController();
-//        }
-//
-//    }
 }

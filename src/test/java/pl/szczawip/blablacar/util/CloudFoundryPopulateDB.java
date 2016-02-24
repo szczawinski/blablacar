@@ -7,13 +7,13 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import pl.szczawip.blablacar.config.HibetnatePostgreSQLConfig;
-import pl.szczawip.blablacar.model.Driver;
-import pl.szczawip.blablacar.model.Ride;
+import pl.szczawip.blablacar.config.Config;
+import pl.szczawip.blablacar.domain.Driver;
+import pl.szczawip.blablacar.domain.Ride;
 import pl.szczawip.blablacar.service.impl.BlaBlaService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {HibetnatePostgreSQLConfig.class})
+@ContextConfiguration(classes = {Config.class})
 public class CloudFoundryPopulateDB {
 
 
@@ -41,9 +41,5 @@ public class CloudFoundryPopulateDB {
         Ride ride2 = new Ride();
         ride2.setDriver(driver2);
         service.saveRide(ride2);
-
-
-
-
     }
 }

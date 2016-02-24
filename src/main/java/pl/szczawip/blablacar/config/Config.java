@@ -10,8 +10,6 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.servlet.view.JstlView;
-import org.springframework.web.servlet.view.UrlBasedViewResolver;
 import pl.szczawip.blablacar.dao.DriverDao;
 import pl.szczawip.blablacar.dao.RideDao;
 import pl.szczawip.blablacar.dao.hibernate.HibernateDriverDao;
@@ -30,7 +28,6 @@ public class Config {
     @Autowired
     private Environment environment;
 
-
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -41,16 +38,14 @@ public class Config {
         return dataSource;
     }
 
-
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[]{"pl.szczawip.blablacar.model"});
+        sessionFactory.setPackagesToScan(new String[]{"pl.szczawip.blablacar.domain"});
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
-
 
     private Properties hibernateProperties() {
         Properties properties = new Properties();
@@ -61,8 +56,6 @@ public class Config {
         return properties;
     }
 
-
-
     @Bean
     @Autowired
     public HibernateTransactionManager transactionManager(SessionFactory s) {
@@ -70,6 +63,7 @@ public class Config {
         txManager.setSessionFactory(s);
         return txManager;
     }
+
 
     @Bean
     public BlaBlaService blaBlaService() {
@@ -86,15 +80,5 @@ public class Config {
         return new HibernateDriverDao();
     }
 
-
-
-    @Bean
-    public UrlBasedViewResolver setupViewResolver() {
-        final UrlBasedViewResolver resolver = new UrlBasedViewResolver();
-        resolver.setPrefix("/WEB-INF/views/");
-        resolver.setSuffix(".jsp");
-        resolver.setViewClass(JstlView.class);
-        return resolver;
-    }
 
 }

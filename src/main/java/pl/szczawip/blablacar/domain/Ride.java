@@ -1,13 +1,10 @@
-package pl.szczawip.blablacar.model;
+package pl.szczawip.blablacar.domain;
 
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.DateSerializer;
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
 import java.util.Date;
 
 
@@ -22,20 +19,13 @@ public class Ride {
 
     private String departureLocation;
 
-    private Date departureTime;
 
-    private Date returnTime;
+    private Date departureTime;
 
     @ManyToOne
     @Cascade(value = CascadeType.ALL)
     private Driver driver;
 
-
-
-
-    public void setReturnTime(final Date returnTime) {
-        this.returnTime = returnTime;
-    }
 
     public String getDestinationLocation() {
         return destinationLocation;
@@ -45,15 +35,11 @@ public class Ride {
         return departureLocation;
     }
 
-    @JsonSerialize(using = DateSerializer.class)
+
     public Date getDepartureTime() {
         return departureTime;
     }
 
-    @JsonSerialize(using = DateSerializer.class)
-    public Date getReturnTime() {
-        return returnTime;
-    }
 
     public void setDestinationLocation(final String destinationLocation) {
         this.destinationLocation = destinationLocation;

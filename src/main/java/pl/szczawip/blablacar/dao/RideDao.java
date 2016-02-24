@@ -1,6 +1,6 @@
 package pl.szczawip.blablacar.dao;
 
-import pl.szczawip.blablacar.model.Ride;
+import pl.szczawip.blablacar.domain.Ride;
 
 import java.util.List;
 

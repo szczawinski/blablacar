@@ -1,4 +1,4 @@
-package pl.szczawip.blablacar.model;
+package pl.szczawip.blablacar.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

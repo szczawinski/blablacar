@@ -4,14 +4,11 @@ import org.hibernate.HibernateException;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.junit.Test;
-import pl.szczawip.blablacar.model.Driver;
-import pl.szczawip.blablacar.model.Ride;
+import pl.szczawip.blablacar.domain.Driver;
+import pl.szczawip.blablacar.domain.Ride;
 
 import java.sql.SQLException;
 
-/**
- * Created by szczawip on 5/5/2015.
- */
 public class CloudFoundryCreateSchema {
 
 

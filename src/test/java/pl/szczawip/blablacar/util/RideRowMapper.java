@@ -2,7 +2,7 @@ package pl.szczawip.blablacar.util;
 
 
 import org.springframework.jdbc.core.RowMapper;
-import pl.szczawip.blablacar.model.Ride;
+import pl.szczawip.blablacar.domain.Ride;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +16,7 @@ public class RideRowMapper implements RowMapper<Ride>{
         Ride ride = new Ride();
         ride.setDepartureLocation(resultSet.getString("departurelocation"));
         ride.setDestinationLocation(resultSet.getString("destinationlocation"));
-        ride.setDepartureTime(resultSet.getTimestamp("departuretime"));
+        ride.setDepartureTime(resultSet.getTimestamp(("departuretime")));
         return ride;
     }
 }
