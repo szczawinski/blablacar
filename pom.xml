@@ -11,7 +11,7 @@
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.2.1.RELEASE</spring.version>
+        <spring.version>4.2.4.RELEASE</spring.version>
         <hibernate.version>4.3.11.Final</hibernate.version>
         <mojarra-version>2.2.5</mojarra-version>
         <webflow-version>2.4.0.RELEASE</webflow-version>
@@ -53,6 +53,15 @@
         </dependency>
 
         <!-- Servlet -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+
+
+
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>

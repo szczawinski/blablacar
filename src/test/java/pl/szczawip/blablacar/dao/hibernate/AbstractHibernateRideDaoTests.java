@@ -60,7 +60,6 @@ public abstract class AbstractHibernateRideDaoTests {
     public void deleteInsertedRide() {
         //given
         final Ride ride = new Ride();
-
         final Ride inserted = fixture.insert(ride);
         final Ride retrieved = fixture.get(inserted.getId());
         //when

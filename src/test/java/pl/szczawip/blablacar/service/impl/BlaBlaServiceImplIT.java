@@ -9,6 +9,6 @@ import pl.szczawip.blablacar.config.ITProperties;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {Config.class, ITProperties.class})
-@Ignore
+
 public class BlaBlaServiceImplIT extends AbstractBlaBlaServiceTests{
 }

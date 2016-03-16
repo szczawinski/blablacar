@@ -4,7 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import pl.szczawip.blablacar.misc.bean.TestBean;
+import pl.szczawip.blablacar.misc.bean.Bean;
+import pl.szczawip.blablacar.misc.config.Config;
 
 
 public class JavaConfigTest {
@@ -13,14 +14,12 @@ public class JavaConfigTest {
     @Test
     public void shouldLoadJavaBasedConfig(){
         //given
-        ApplicationContext context = new AnnotationConfigApplicationContext(TestConfig.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
         //when
-        TestBean testBean = context.getBean("bean1", TestBean.class);
+        Bean bean = context.getBean("bean1", Bean.class);
         //then
-        Assert.assertNotNull(testBean);
-        Assert.assertNotNull(testBean.getInjectedBean());
-        Assert.assertEquals("autowired", testBean.getInjectedBean().getName());
+        Assert.assertNotNull(bean);
+        Assert.assertNotNull(bean.getInjectedBean());
+        Assert.assertEquals("autowired", bean.getInjectedBean().getName());
     }
-
-
 }

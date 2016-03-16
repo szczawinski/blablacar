@@ -8,7 +8,4 @@ import pl.szczawip.blablacar.config.TestProperties;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {Config.class, TestProperties.class})
-public class HibernateRideDoTest extends AbstractHibernateRideDaoTests {
-
-
-}
+public class HibernateRideDoTest extends AbstractHibernateRideDaoTests {}

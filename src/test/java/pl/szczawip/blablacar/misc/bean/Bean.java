@@ -2,24 +2,26 @@ package pl.szczawip.blablacar.misc.bean;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class TestBean {
+public class Bean {
 
     private String name;
 
-    @Autowired
+    @Autowired(required = false)
     private InjectedBean injectedBean;
 
-    public TestBean(){
+    public Bean(){
         name = "constructor";
     }
 
-    public TestBean(String name){
+    public Bean(String name){
         this.name = name;
     }
 
-    public static TestBean createInstance(){
-        return new TestBean("newInstance");
+    public static Bean createInstance(){
+        return new Bean("newInstance");
     }
+
+    public void setName(String name){this.name = name;}
 
     public String getName(){
         return name;

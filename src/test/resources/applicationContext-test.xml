@@ -7,11 +7,10 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="testBean1" class="pl.szczawip.blablacar.misc.bean.TestBean"/>
-
+    <bean id="testBean1" class="pl.szczawip.blablacar.misc.bean.Bean"/>
 
     <bean id="testBean2"
-          class="pl.szczawip.blablacar.misc.bean.TestBean"
+          class="pl.szczawip.blablacar.misc.bean.Bean"
           factory-method="createInstance"/>
 
 
@@ -22,12 +21,12 @@
           factory-bean="factory"
           factory-method="createTestBean"/>
 
-    <bean id="testBean4" class="pl.szczawip.blablacar.misc.bean.TestBean">
-        <constructor-arg type="String" value="constructor-arg"/>
+    <bean id="testBean4" class="pl.szczawip.blablacar.misc.bean.Bean">
+        <constructor-arg  value="constructor-arg"/>
     </bean>
 
 
-    <bean id="testBean5" class="pl.szczawip.blablacar.misc.bean.TestBean">
+    <bean id="testBean5" class="pl.szczawip.blablacar.misc.bean.Bean">
         <replaced-method name="getName" replacer="methodReplacer"/>
     </bean>
 
@@ -36,5 +35,17 @@
     <context:annotation-config/>
 
     <bean id="injectedBean" class="pl.szczawip.blablacar.misc.bean.InjectedBean"/>
+
+    <bean id="testBeanWithRequiredSetter" class="pl.szczawip.blablacar.misc.bean.TestBeanWithRequiredSetter">
+        <property name="name" value="autowired"/>
+    </bean>
+
+    <bean id="lifecycleBean" class="pl.szczawip.blablacar.misc.bean.LifecycleBean"/>
+
+    <context:property-placeholder location="classpath:test.properties"/>
+
+    <bean id="beanWithProperties" class="pl.szczawip.blablacar.misc.bean.Bean">
+        <property name="name" value="${name}"/>
+    </bean>
 
 </beans>
